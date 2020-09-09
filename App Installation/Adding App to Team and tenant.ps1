@@ -2,15 +2,12 @@
 
 param(
       [Parameter(Mandatory=$true)][System.String]$OwnerPrincipalName,
-      [Parameter(Mandatory=$true)][System.String]$AppName
+      [Parameter(Mandatory=$true)][System.String]$AppName,
+      [Parameter(Mandatory=$true)][System.String]$Tenantid,
+      [Parameter(Mandatory=$true)][System.String]$client_Id,
+      [Parameter(Mandatory=$true)][System.String]$Client_Secret
       )
      
-#creating token id
-$input = get-content info.json| ConvertFrom-Json
-$Client_Secret = $input.Client_Secret
-$client_Id = $input.client_Id
-$Tenantid = $input.Tenantid
-
 #Grant Adminconsent 
 $Grant= 'https://login.microsoftonline.com/common/adminconsent?client_id='
 $admin = '&state=12345&redirect_uri=https://localhost:1234'
